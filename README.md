@@ -1,2 +1,4 @@
-# dl-genai-project-26-t2
-DLGenAI Project for 2026 Term 2
+# Smart MCQ Solver Challenge - DLGenAI Project
+Kalyan Dath
+
+Roll no: 21f200763
