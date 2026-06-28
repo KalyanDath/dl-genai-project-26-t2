@@ -2,7 +2,7 @@
 **Kalyan Dath** **Roll no: 21f200763**
 
 ## Models Implemented
-1. **Finetuned DeBerta-v3: A transformer model fine tuned using the hugging face `Trainer` to evaluate semantic relationship between the prompts and options.
+1. **Finetuned DeBerta-v3** : A transformer model fine tuned using the hugging face `Trainer` to evaluate semantic relationship between the prompts and options.
 
 
 ## Evaluation Metric
