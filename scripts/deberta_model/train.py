@@ -51,7 +51,7 @@ def train_model():
     wandb.login(key=WB_KEY)
 
     run = wandb.init(
-        project = "21f200073-t22026",
+        project = "test", #"21f2000763-t22026",
         name = "deberta-v3-finetune-run4",
         tags = ["deberta", "transformer"],
         config = config,
@@ -90,7 +90,7 @@ def train_model():
         args = training_args,
         compute_metrics = compute_metrics,
         train_dataset = tokenized_train_dataset,
-        eval_dataset=tokenized_val_dataset,
+        eval_dataset= tokenized_val_dataset,
         data_collator = data_collator
     )
 
