@@ -30,7 +30,7 @@ def preprocess(data):
         options += [data[x][i] for x in LABEL_MAP.keys()]
         answer.append(LABEL_MAP[data["answer"][i]])
 
-    tokenized_input = tokenizer(prompts, options, truncation = True, MAX_LENGTH = 256)
+    tokenized_input = tokenizer(prompts, options, truncation = True, max_length = MAX_LENGTH)
 
     for i in range(0,len(tokenized_input["input_ids"]),5):
 
