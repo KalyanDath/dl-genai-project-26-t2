@@ -1,11 +1,6 @@
 import torch
 import streamlit as st
 from pathlib import Path
-import os
-
-st.write("Current working directory:", os.getcwd())
-st.write("App file:", __file__)
-st.write("Files in app directory:", os.listdir(Path(__file__).parent))
 
 from transformers import AutoTokenizer
 from model import BiLSTMAttention
@@ -18,7 +13,7 @@ model = BiLSTMAttention(tokenizer.vocab_size)
 
 model.load_state_dict(
     torch.load(
-        "bilstm_attention.pth",
+        "/mount/src/dl-genai-project-26-t2/BiLSTM_HF/bilstm_attention.pth",
                map_location="cpu"
     )
 )
