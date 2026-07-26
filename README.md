@@ -1,8 +1,33 @@
 # Smart MCQ Solver Challenge - DLGenAI Project
 **Kalyan Dath** **Roll no: 21f200763**
 
-## Models Implemented
-1. **Finetuned DeBerta-v3** : A transformer model fine tuned using the hugging face `Trainer` to evaluate semantic relationship between the prompts and options.
+# Models Implemented
+
+## 1. BiLSTM with Attention (From Scratch)
+
+- Implemented entirely using PyTorch.
+- Uses trainable word embeddings followed by a Bidirectional LSTM and an Attention mechanism.
+- Serves as the baseline deep learning model.
+
+---
+
+## 2. Fine-tuned DeBERTa-v3
+
+- Built using Hugging Face Transformers.
+- Uses `AutoModelForMultipleChoice`.
+- Fine-tuned with the Hugging Face `Trainer` API.
+- Predicts the correct answer by scoring each question-option pair.
+
+---
+
+## 3. Retrieval-Augmented Generation (RAG)
+
+- Uses **BGE Sentence Transformer** to generate dense embeddings.
+- Stores document embeddings using **FAISS** for efficient similarity search.
+- Retrieves relevant context and generates answers using a Large Language Model (Qwen/Llama).
+- Uses LangChain components for retrieval and prompt orchestration.
+
+---
 
 ## Project Structure
 * ```/scripts/deberta_model/preprocess.py``` : Loads dataset, and does tokenization.
