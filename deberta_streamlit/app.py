@@ -83,16 +83,26 @@ E = st.text_input("Option E")
 
 if st.button("Predict"):
 
-    prediction = predict(
-        prompt,
-        A,
-        B,
-        C,
-        D,
-        E
-    )
+    if not all([
+        prompt.strip(),
+        A.strip(),
+        B.strip(),
+        C.strip(),
+        D.strip(),
+        E.strip()
+    ]):
+        st.error("Please enter the question and all five options.")
+    else:
+        prediction = predict(
+            prompt,
+            A,
+            B,
+            C,
+            D,
+            E
+        )
 
-    st.success("Top 3 Predictions")
+    st.success(f"Top 3 Predictions: {prediction}")
 
     for i, (option, confidence) in enumerate(prediction, 1):
         st.write(f"{i}. **{option}** — {confidence:.2f}%")
