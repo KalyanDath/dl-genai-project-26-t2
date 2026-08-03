@@ -8,13 +8,20 @@ from transformers import (
 
 MODEL_PATH = "KalyanDath18/deberta-finetuned"
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+@st.cache_resource
+def load_model():
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 
-model = AutoModelForMultipleChoice.from_pretrained(
-    MODEL_PATH
-)
+    model = AutoModelForMultipleChoice.from_pretrained(
+        MODEL_PATH
+    )
 
-model.eval()
+    model.eval()
+
+    return tokenizer, model
+
+
+tokenizer, model = load_model()
 
 
 def predict(prompt, A, B, C, D, E):
