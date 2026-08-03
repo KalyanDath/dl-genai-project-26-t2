@@ -78,12 +78,12 @@ st.caption(
 
 st.sidebar.title("Model Information")
 
-st.sidebar.markdown(f"""
+st.sidebar.markdown("""
 **Model:** DeBERTa-v3 Base
 
 **Task:** Multiple Choice Question Answering
 
-**Max Sequence Length:** {tokenizer.model_max_length}
+**Max Sequence Length:** 512
 
 **Classes:** A, B, C, D, E
 
@@ -93,6 +93,14 @@ st.sidebar.markdown(f"""
 
 
 prompt = st.text_area("Question")
+with st.expander("Model Details"):
+    st.write(f"Model: {MODEL_PATH}")
+    st.write(f"Tokenizer: {tokenizer.__class__.__name__}")
+    st.write(f"Vocabulary Size: {tokenizer.vocab_size:,}")
+    
+    if prompt:
+        num_tokens = len(tokenizer.tokenize(prompt))
+        st.write(f"Question Tokens: {num_tokens}")
 
 A = st.text_input("Option A")
 B = st.text_input("Option B")
@@ -100,15 +108,7 @@ C = st.text_input("Option C")
 D = st.text_input("Option D")
 E = st.text_input("Option E")
 
-with st.expander("Model Details"):
-    st.write(f"Model: {MODEL_PATH}")
-    st.write(f"Tokenizer: {tokenizer.__class__.__name__}")
-    st.write(f"Vocabulary Size: {tokenizer.vocab_size:,}")
-    st.write(f"Maximum Sequence Length: {tokenizer.model_max_length}")
-    
-    if prompt:
-        num_tokens = len(tokenizer.tokenize(prompt))
-        st.write(f"Question Tokens: {num_tokens}")
+
 
 
 if st.button("Predict"):
