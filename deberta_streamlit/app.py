@@ -93,16 +93,17 @@ if st.button("Predict"):
     ]):
         st.error("Please enter the question and all five options.")
     else:
-        prediction = predict(
-            prompt,
-            A,
-            B,
-            C,
-            D,
-            E
-        )
+        with st.spinner("Predicting..."):
+            prediction = predict(
+                prompt,
+                A,
+                B,
+                C,
+                D,
+                E
+            )
 
-        st.success(f"Top 3 Predictions: {prediction}")
+            st.success(f"Top 3 Predictions")
 
-        for i, (option, confidence) in enumerate(prediction, 1):
-            st.write(f"{i}. **{option}** — {confidence:.2f}%")
+            for i, (option, confidence) in enumerate(prediction, 1):
+                st.write(f"{i}. **{option}** — {confidence:.2f}%")
