@@ -71,20 +71,26 @@ def predict(prompt, A, B, C, D, E):
 
 
 st.title("DeBERTa MCQ Solver")
+st.caption(
+    "Enter a multiple-choice question and five answer options. "
+    "The model returns the three most likely answers."
+)
 
 st.sidebar.title("Model Information")
 
-st.sidebar.markdown("""
+st.sidebar.markdown(f"""
 **Model:** DeBERTa-v3 Base
 
 **Task:** Multiple Choice Question Answering
 
-**Max Sequence Length:** 512
+**Max Sequence Length:** {tokenizer.model_max_length}
 
 **Classes:** A, B, C, D, E
 
 **Framework:** Hugging Face Transformers + PyTorch
 """)
+
+
 
 prompt = st.text_area("Question")
 
@@ -93,6 +99,16 @@ B = st.text_input("Option B")
 C = st.text_input("Option C")
 D = st.text_input("Option D")
 E = st.text_input("Option E")
+
+with st.expander("Model Details"):
+    st.write(f"Model: {MODEL_PATH}")
+    st.write(f"Tokenizer: {tokenizer.__class__.__name__}")
+    st.write(f"Vocabulary Size: {tokenizer.vocab_size:,}")
+    st.write(f"Maximum Sequence Length: {tokenizer.model_max_length}")
+    
+    if prompt:
+        num_tokens = len(tokenizer.tokenize(prompt))
+        st.write(f"Question Tokens: {num_tokens}")
 
 
 if st.button("Predict"):
@@ -117,7 +133,7 @@ if st.button("Predict"):
                 E
             )
 
-            st.success(f"Top 3 Predictions")
+            st.success("Top 3 Predictions")
 
             for i, (option, confidence) in enumerate(prediction, 1):
                 st.write(f"{i}. **{option}** — {confidence:.2f}%")
