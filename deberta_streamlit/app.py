@@ -6,7 +6,7 @@ from transformers import (
     AutoModelForMultipleChoice
 )
 
-MODEL_PATH = "/mount/src/dl-genai-project-26-t2/BiLSTM_HF/deberta_finetuned"
+MODEL_PATH = "kalyandath/deberta-finetuned"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 
