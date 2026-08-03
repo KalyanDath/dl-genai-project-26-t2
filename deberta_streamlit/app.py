@@ -57,7 +57,17 @@ def predict(prompt, A, B, C, D, E):
 
     labels = ["A", "B", "C", "D", "E"]
 
-    return " ".join(labels[i] for i in top3)
+    results = []
+
+    for idx in top3:
+        results.append(
+            (
+                labels[idx],
+                probs[0][idx].item() * 100
+            )
+        )
+
+    return results
 
 
 st.title("DeBERTa MCQ Solver")
@@ -82,4 +92,7 @@ if st.button("Predict"):
         E
     )
 
-    st.success(f"Top 3 Predictions: {prediction}")
+    st.success("Top 3 Predictions")
+
+    for i, (option, confidence) in enumerate(prediction, 1):
+        st.write(f"{i}. **{option}** — {confidence:.2f}%")
