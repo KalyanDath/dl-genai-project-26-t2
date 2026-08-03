@@ -72,6 +72,20 @@ def predict(prompt, A, B, C, D, E):
 
 st.title("DeBERTa MCQ Solver")
 
+st.sidebar.title("Model Information")
+
+st.sidebar.markdown("""
+**Model:** DeBERTa-v3 Base
+
+**Task:** Multiple Choice Question Answering
+
+**Max Sequence Length:** 512
+
+**Classes:** A, B, C, D, E
+
+**Framework:** Hugging Face Transformers + PyTorch
+""")
+
 prompt = st.text_area("Question")
 
 A = st.text_input("Option A")
