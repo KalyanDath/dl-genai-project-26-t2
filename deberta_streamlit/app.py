@@ -6,7 +6,7 @@ from transformers import (
     AutoModelForMultipleChoice
 )
 
-MODEL_PATH = "kalyandath/deberta-finetuned"
+MODEL_PATH = "KalyanDath18/deberta-finetuned"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 
