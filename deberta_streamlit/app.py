@@ -102,7 +102,7 @@ if st.button("Predict"):
             E
         )
 
-    st.success(f"Top 3 Predictions: {prediction}")
+        st.success(f"Top 3 Predictions: {prediction}")
 
-    for i, (option, confidence) in enumerate(prediction, 1):
-        st.write(f"{i}. **{option}** — {confidence:.2f}%")
+        for i, (option, confidence) in enumerate(prediction, 1):
+            st.write(f"{i}. **{option}** — {confidence:.2f}%")
