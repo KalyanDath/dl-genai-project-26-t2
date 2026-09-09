@@ -91,12 +91,12 @@ st.sidebar.markdown("""
 """)
 
 
-sample_question = "What is the capital of France?"
-sample_A = "Berlin"
-sample_B = "Madrid"
-sample_C = "Paris"
-sample_D = "Rome"
-sample_E = "London"
+sample_question = "What is the distinction between redshift due to the expansion of the universe and Doppler redshift? among the listed options."
+sample_A = "Redshift due to the expansion of the universe depends on the rate of change of a(t) at the times of emission or absorption, while Doppler redshift depends on the raise of a(t) in the whole period from emission to absorption."
+sample_B = "Redshift due to the expansion of the universe depends on the local velocity of the object emitting the light, while Doppler redshift depends on the cosmological model chosen to describe the expansion of the universe."
+sample_C = "There is no contrast between redshift due to the expansion of the universe and Doppler redshift."
+sample_D = "Redshift due to the expansion of the universe depends on the cosmological model chosen to describe the expansion of the universe, while Doppler redshift depends on the local velocity of the object emitting the light."
+sample_E = " Redshift due to the expansion of the universe depends on the boost of a(t) in the whole period from emission to absorption, while Doppler redshift depends on the rate of change of a(t) at the times of emission or absorption."
 
 
 prompt = st.text_area("Question", value = sample_question)
