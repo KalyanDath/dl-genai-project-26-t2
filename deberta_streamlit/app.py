@@ -91,8 +91,15 @@ st.sidebar.markdown("""
 """)
 
 
+sample_question = "What is the capital of France?"
+sample_A = "Berlin"
+sample_B = "Madrid"
+sample_C = "Paris"
+sample_D = "Rome"
+sample_E = "London"
 
-prompt = st.text_area("Question")
+
+prompt = st.text_area("Question", value = sample_question)
 with st.expander("Model Details"):
     st.write(f"Model: {MODEL_PATH}")
     st.write(f"Tokenizer: {tokenizer.__class__.__name__}")
@@ -102,13 +109,22 @@ with st.expander("Model Details"):
         num_tokens = len(tokenizer.tokenize(prompt))
         st.write(f"Question Tokens: {num_tokens}")
 
-A = st.text_input("Option A")
-B = st.text_input("Option B")
-C = st.text_input("Option C")
-D = st.text_input("Option D")
-E = st.text_input("Option E")
+A = st.text_input("Option A", value=sample_A)
+B = st.text_input("Option B", value=sample_B)
+C = st.text_input("Option C", value=sample_C)
+D = st.text_input("Option D", value=sample_D)
+E = st.text_input("Option E", value=sample_E)
 
+def display_predictions():
+    prediction = predict(prompt,A,B,C,D,E)
+    st.success("Top 3 Predictions")
+for i, (option, confidence) in enumerate(prediction, 1):
+    st.write(f"{i}. **{option}** — {confidence:.2f}%")
 
+if "initial_prediction_done" not in st.session_state:
+    st.session_state.initial_prediction_done = True
+    with st.spinner("Running sample prediction..."):
+        display_predictions()
 
 
 if st.button("Predict"):
