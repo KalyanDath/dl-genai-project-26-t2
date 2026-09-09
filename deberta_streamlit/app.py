@@ -117,9 +117,10 @@ E = st.text_input("Option E", value=sample_E)
 
 def display_predictions():
     prediction = predict(prompt,A,B,C,D,E)
-    st.success("Top 3 Predictions")
-for i, (option, confidence) in enumerate(prediction, 1):
-    st.write(f"{i}. **{option}** — {confidence:.2f}%")
+    st.success("Top 3 Predictions")
+    
+    for i, (option, confidence) in enumerate(prediction, 1):
+        st.write(f"{i}. **{option}** — {confidence:.2f}%")
 
 if "initial_prediction_done" not in st.session_state:
     st.session_state.initial_prediction_done = True
